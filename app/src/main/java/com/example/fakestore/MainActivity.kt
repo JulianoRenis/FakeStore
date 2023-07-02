@@ -2,7 +2,9 @@ package com.example.fakestore
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.fakestore.adapter.ProdutoAdapter
 import com.example.fakestore.databinding.ActivityMainBinding
 import com.example.fakestore.model.Produto
@@ -21,8 +23,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        carregarProduto()
+
         val recyclerViewProduto = binding.idRv
-        recyclerViewProduto.layoutManager = LinearLayoutManager(this)
+        recyclerViewProduto.layoutManager = GridLayoutManager(this,3,RecyclerView.VERTICAL,false)
         recyclerViewProduto.setHasFixedSize(true)
         adapterProdutos = ProdutoAdapter()
         adapterProdutos.attackProdutos(listProdutos.toList())
