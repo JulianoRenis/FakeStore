@@ -5,17 +5,18 @@ import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fakestore.adapter.MainHeaderAdapter
 import com.example.fakestore.adapter.ProdutoAdapter
 import com.example.fakestore.databinding.ActivityMainBinding
 import com.example.fakestore.model.Produto
 import com.example.fakestore.viewholder.ProdutoViewHolder
+import java.util.Arrays
 
 class MainActivity : AppCompatActivity() {
 
 
     private lateinit var binding : ActivityMainBinding
-    private lateinit var adapterProdutos: ProdutoAdapter
-    private val listProdutos : MutableList<Produto> =  mutableListOf()
+    private var adapter = MainHeaderAdapter()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,48 +24,18 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        carregarProduto()
-
-        val recyclerViewProduto = binding.idRv
-        recyclerViewProduto.layoutManager = GridLayoutManager(this,3,RecyclerView.VERTICAL,false)
-        recyclerViewProduto.setHasFixedSize(true)
-        adapterProdutos = ProdutoAdapter()
-        adapterProdutos.attackProdutos(listProdutos.toList())
-
-        recyclerViewProduto.adapter = adapterProdutos
 
 
-    }
+        val recyclerView = binding.idRv
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.setHasFixedSize(true)
+        adapter.attackItens(Arrays.asList(""))
 
-
-    private fun carregarProduto(){
-        val arroz = R.drawable.arros
-        val feijao = R.drawable.feijao
-        val macarrao = R.drawable.macarrao
-        val oleo = R.drawable.oleo
-        val alho = R.drawable.alho
-        val picanha = R.drawable.picanha
-
-        val produtosArroz = Produto("Arroz",10.90F,arroz)
-        listProdutos.add(produtosArroz)
-
-
-        val produtoFeijao = Produto("Feijão",15.56F,feijao)
-        listProdutos.add(produtoFeijao)
-
-        val produtoMacarrao = Produto("Macarrão",15.56F,macarrao)
-        listProdutos.add(produtoMacarrao)
-
-        val produtoOleo = Produto("Feijão",15.56F,oleo)
-        listProdutos.add(produtoOleo)
-
-        val produtoAlho = Produto("Alho",15.56F,alho)
-        listProdutos.add(produtoAlho)
-
-        val produtoPicanha = Produto("Picanha",15.56F,alho)
-        listProdutos.add(produtoPicanha)
-
+        recyclerView.adapter = adapter
 
 
     }
+
+
+
 }
