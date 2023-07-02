@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fakestore.adapter.ProdutoAdapter
 import com.example.fakestore.databinding.ActivityMainBinding
+import com.example.fakestore.model.Produto
 import com.example.fakestore.viewholder.ProdutoViewHolder
 
 class MainActivity : AppCompatActivity() {
@@ -12,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding
     private lateinit var adapterProdutos: ProdutoAdapter
-    private val listProdutos : MutableList<ProdutoViewHolder> = mutableListOf()
+    private val listProdutos : List<Produto> =  emptyList()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,8 +30,9 @@ class MainActivity : AppCompatActivity() {
         recyclerViewProduto.adapter = adapterProdutos
 
 
+    }
 
-
+    private fun carregarProduto(){
 
     }
 }
