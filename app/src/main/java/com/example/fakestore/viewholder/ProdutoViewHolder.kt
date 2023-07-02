@@ -8,6 +8,8 @@ class ProdutoViewHolder(var binding: ItemProdutoBinding) : RecyclerView.ViewHold
 
 
     fun bind(produto: Produto){
-
+        binding.imgProduto.setImageResource(produto.imagem)
+        binding.txtNomeProduto.setText(produto.titulo)
+        binding.txtPreco.setText("R$ ${produto.preco}")
     }
 }
