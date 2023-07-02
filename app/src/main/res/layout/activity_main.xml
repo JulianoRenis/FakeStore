@@ -99,6 +99,7 @@
         app:srcCompat="@drawable/destaque" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/idRv"
         android:layout_width="409dp"
         android:layout_height="323dp"
         android:layout_marginTop="1dp"
